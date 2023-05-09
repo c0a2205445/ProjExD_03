@@ -145,12 +145,12 @@ class Beam:
         screen.blit(self._img, self._rct)
 
 
-def draw_text(screen,x,y,text,size,col):#文字表示の関数
-    font = pg.font.Font(None,size)
-    s = font.render(text,True,col)
-    x = x - s.get_width()/2
-    y = y - s.get_height()/2
-    screen.blit(s,[x,y])
+def draw_text(screen,x,y,text,size,col):  #  文字表示の関数
+    font = pg.font.Font(None,size)  #  文字のサイズの設定
+    s = font.render(text,True,col)  #  引数で設定されたGAMEOVERと書かれたsufaceインスタンスを生成
+    x = x - s.get_width()/2  #  幅の設定
+    y = y - s.get_height()/2  #  高さの設定
+    screen.blit(s,[x,y])  #  表示
 
 
 def main():
