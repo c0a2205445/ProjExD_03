@@ -7,7 +7,8 @@ import pygame as pg
 WIDTH = 1600  # ゲームウィンドウの幅
 HEIGHT = 900  # ゲームウィンドウの高さ
 NUM_OF_BOMBS = 5  # 爆弾の数
-GAMEOVER = (255, 0, 255)
+gameovercolor = (255, 0, 255)
+scorecolor = (0, 0, 0)
 
 
 def check_bound(area: pg.Rect, obj: pg.Rect) -> tuple[bool, bool]:
@@ -157,6 +158,7 @@ def main():
     screen = pg.display.set_mode((WIDTH, HEIGHT))
     clock = pg.time.Clock()
     bg_img = pg.image.load("ex03/fig/pg_bg.jpg")
+    score = 0
 
     bird = Bird(3, (900, 400))
     bombs = [Bomb() for _ in range(NUM_OF_BOMBS)]
@@ -179,7 +181,8 @@ def main():
             if bird._rct.colliderect(bomb._rct):
                 # ゲームオーバー時に，こうかとん画像を切り替え，1秒間表示させる
                 bird.change_img(8, screen)
-                draw_text(screen, 800, 450, "GAMEOVER", 300, GAMEOVER)
+                draw_text(screen, 800, 450, "GAMEOVER", 300, gameovercolor)  #  
+                draw_text(screen, 130, 30, f"score{score}", 100, scorecolor)  #
                 pg.display.update()
                 time.sleep(1)
                 return
@@ -193,6 +196,7 @@ def main():
             beam.update(screen)
             for i, bomb in enumerate(bombs):
                 if beam._rct.colliderect(bomb._rct):
+                    score += 1
                     beam = None
                     del bombs[i]
                     bird.change_img(6, screen)
