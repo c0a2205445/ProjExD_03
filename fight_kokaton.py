@@ -37,7 +37,7 @@ class Bird:
     }
 
     def __init__(self, num: int, xy: tuple[int, int]):
-        """
+        """ 
         こうかとん画像Surfaceを生成する
         引数1 num：こうかとん画像ファイル名の番号
         引数2 xy：こうかとん画像の位置座標タプル
@@ -178,7 +178,9 @@ def main():
         key_lst = pg.key.get_pressed()
         bird.update(key_lst, screen)
 
-        if beam is not None:  # ビームが存在しているとき 
+        
+
+        if beam is not None:  #  ビームが存在しているとき 
             beam.update(screen)
             for i, bomb in enumerate(bombs):
                 if beam._rct.colliderect(bomb._rct):
@@ -196,3 +198,4 @@ if __name__ == "__main__":
     main()
     pg.quit()
     sys.exit()
+    
