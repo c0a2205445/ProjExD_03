@@ -37,7 +37,7 @@ class Bird:
     }
 
     def __init__(self, num: int, xy: tuple[int, int]):
-        """
+        """ 
         こうかとん画像Surfaceを生成する
         引数1 num：こうかとん画像ファイル名の番号
         引数2 xy：こうかとん画像の位置座標タプル
